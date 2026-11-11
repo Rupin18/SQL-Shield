@@ -1,0 +1,88 @@
+
+{% extends "base.html" %}
+
+{% block title %}SQL Detection | SQL Shield{% endblock %}
+
+{% block page_heading %}SQL Injection Detection{% endblock %}
+
+{% block page_subtitle %}
+Analyze submitted input for suspicious SQL injection patterns.
+{% endblock %}
+
+{% block content %}
+
+<section class="panel detection-tool">
+
+    <div class="panel-heading">
+        <div>
+            <h3>SQL Injection Detection Engine</h3>
+            <p>Inspect input using the local pattern-based detection engine.</p>
+        </div>
+        <span class="live-tag">DETECTION ACTIVE</span>
+    </div>
+
+    <form id="detection-form">
+
+        <label for="sql-input">Input to analyze</label>
+
+        <textarea
+            id="sql-input"
+            name="input"
+            maxlength="1000"
+            placeholder="Enter text to analyze..."
+            required
+        ></textarea>
+
+        <div class="detection-controls">
+            <small>Maximum 1000 characters</small>
+            <button type="submit" id="detect-button">
+                Analyze Input →
+            </button>
+        </div>
+
+    </form>
+
+    <div
+        id="detection-result"
+        class="detection-result"
+        aria-live="polite"
+        hidden
+    ></div>
+
+</section>
+
+<section class="panel">
+    <div class="panel-heading">
+        <div>
+            <h3>Detection Information</h3>
+            <p>What this engine checks</p>
+        </div>
+    </div>
+
+    <div class="severity-list">
+        <div class="severity-item">
+            <span>UNION SELECT patterns</span>
+            <strong>Check</strong>
+        </div>
+        <div class="severity-item">
+            <span>Boolean-based conditions</span>
+            <strong>Check</strong>
+        </div>
+        <div class="severity-item">
+            <span>SQL comment indicators</span>
+            <strong>Check</strong>
+        </div>
+        <div class="severity-item">
+            <span>Time-delay function indicators</span>
+            <strong>Check</strong>
+        </div>
+    </div>
+
+    <p class="subtitle">
+        Educational pattern-based detection only. This is not a
+        comprehensive SQL injection scanner.
+    </p>
+</section>
+
+{% endblock %}
+

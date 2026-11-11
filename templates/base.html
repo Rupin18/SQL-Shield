@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}SQL Shield | Security Operations Center{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+<aside class="sidebar">
+
+    <div class="logo">SQL<span>SHIELD</span></div>
+
+    <p class="nav-label">WORKSPACE</p>
+
+    <nav>
+        <a href="{{ url_for('home') }}"
+           class="{% if request.endpoint == 'home' %}active{% endif %}">
+            ◈ Dashboard
+        </a>
+
+        <a href="{{ url_for('analytics') }}"
+           class="{% if request.endpoint == 'analytics' %}active{% endif %}">
+            ▥ Analytics
+        </a>
+
+        <a href="{{ url_for('detection') }}"
+           class="{% if request.endpoint == 'detection' %}active{% endif %}">
+            ⌕ SQL Detection
+        </a>
+
+        <a href="{{ url_for('testing') }}"
+           class="{% if request.endpoint == 'testing' %}active{% endif %}">
+            ⌘ Vulnerability Testing
+        </a>
+
+        <a href="{{ url_for('mitigation') }}"
+           class="{% if request.endpoint == 'mitigation' %}active{% endif %}">
+            ⬡ Mitigation
+        </a>
+
+        <a href="{{ url_for('reports') }}"
+           class="{% if request.endpoint == 'reports' %}active{% endif %}">
+            ▤ Reports
+        </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <div class="system-indicator">
+            <span class="status-dot"></span>
+
+            <div>
+                <strong>System Online</strong>
+                <small>Local environment</small>
+            </div>
+        </div>
+
+        <p>SQL SHIELD v1.0</p>
+
+    </div>
+
+</aside>
+
+<main class="main-content">
+
+    <header class="topbar">
+
+        <div>
+            <p class="eyebrow">SECURITY OPERATIONS CENTER</p>
+
+            <h1>{% block page_heading %}Dashboard Overview{% endblock %}</h1>
+
+            <p class="subtitle">
+                {% block page_subtitle %}
+                Monitor your application's security posture.
+                {% endblock %}
+            </p>
+        </div>
+
+        <div class="top-actions">
+
+            <div class="live-indicator">
+                <span class="status-dot"></span>
+                LIVE MONITORING
+            </div>
+
+            <div class="profile">
+                {{ session.get('username', 'User') }}
+
+                <a href="{{ url_for('auth.logout') }}">Logout</a>
+            </div>
+
+        </div>
+
+    </header>
+
+    {% block content %}{% endblock %}
+
+</main>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>

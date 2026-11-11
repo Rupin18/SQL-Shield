@@ -1,0 +1,201 @@
+
+{% extends "base.html" %}
+
+{% block title %}Dashboard | SQL Shield{% endblock %}
+
+{% block page_heading %}Dashboard Overview{% endblock %}
+
+{% block page_subtitle %}
+Monitor your application's security posture.
+{% endblock %}
+
+{% block content %}
+
+<section class="welcome">
+    <div>
+        <p class="eyebrow">SECURITY COMMAND CENTER</p>
+        <h2>Welcome to SQL Shield</h2>
+        <p>
+            Detect vulnerabilities. Monitor suspicious activity.
+            Protect your database with secure coding practices.
+        </p>
+        <a href="/testing" class="primary-action">
+            Explore Security Testing →
+        </a>
+    </div>
+    <div class="shield-icon">🛡️</div>
+</section>
+
+<section class="section-heading">
+    <div>
+        <h2>Security Overview</h2>
+        <p>Application security metrics</p>
+    </div>
+    <span class="period-label">ALL-TIME STATISTICS</span>
+</section>
+
+<section class="stats-grid">
+
+    <article class="stat-card">
+        <div class="stat-top">
+            <span>Total Scans</span>
+            <span class="stat-icon blue">⌕</span>
+        </div>
+        <h2 id="total-scans">--</h2>
+        <small>Security assessments</small>
+    </article>
+
+    <article class="stat-card">
+        <div class="stat-top">
+            <span>Vulnerabilities</span>
+            <span class="stat-icon red">⚠</span>
+        </div>
+        <h2 id="total-vulnerabilities">--</h2>
+        <small>Detected findings</small>
+    </article>
+
+    <article class="stat-card">
+        <div class="stat-top">
+            <span>Blocked Inputs</span>
+            <span class="stat-icon green">✓</span>
+        </div>
+        <h2 id="blocked-inputs">--</h2>
+        <small>Rejected test attempts</small>
+    </article>
+
+    <article class="stat-card">
+        <div class="stat-top">
+            <span>Security Score</span>
+            <span class="stat-icon cyan">◈</span>
+        </div>
+        <h2 id="security-score">--%</h2>
+        <small>Pending assessment</small>
+    </article>
+
+</section>
+
+<section class="dashboard-grid" id="analytics">
+
+    <article class="panel chart-panel">
+        <div class="panel-heading">
+            <div>
+                <h3>Security Activity</h3>
+                <p>Recorded security events over time</p>
+            </div>
+            <span class="live-tag">LIVE DATA</span>
+        </div>
+
+        <div class="chart-placeholder" id="activity-chart">
+            <div class="empty-state">
+                <span>▥</span>
+                <p>Activity chart will appear here</p>
+                <small>Waiting for recorded scan data</small>
+            </div>
+        </div>
+    </article>
+
+    <article class="panel severity-panel">
+        <div class="panel-heading">
+            <div>
+                <h3>Vulnerability Severity</h3>
+                <p>Finding distribution</p>
+            </div>
+        </div>
+
+        <div class="severity-list">
+            <div class="severity-item">
+                <span><i class="severity-dot critical"></i> Critical</span>
+                <strong id="critical-count">0</strong>
+            </div>
+            <div class="severity-item">
+                <span><i class="severity-dot high"></i> High</span>
+                <strong id="high-count">0</strong>
+            </div>
+            <div class="severity-item">
+                <span><i class="severity-dot medium"></i> Medium</span>
+                <strong id="medium-count">0</strong>
+            </div>
+            <div class="severity-item">
+                <span><i class="severity-dot low"></i> Low</span>
+                <strong id="low-count">0</strong>
+            </div>
+        </div>
+
+        <div class="severity-note">
+            Severity data will update from recorded findings.
+        </div>
+    </article>
+
+</section>
+
+<section class="section-heading">
+    <div>
+        <h2>Security Modules</h2>
+        <p>Access your project tools</p>
+    </div>
+</section>
+
+<section class="module-grid">
+
+    <article class="module-card">
+        <div class="module-icon">🔍</div>
+        <h3>SQL Injection Detection</h3>
+        <p>Inspect suspicious inputs and identify potential SQL injection patterns.</p>
+        <a href="/detection">Open Detection Module →</a>
+    </article>
+
+    <article class="module-card">
+        <div class="module-icon">🧪</div>
+        <h3>Vulnerability Testing</h3>
+        <p>Run controlled security tests against your local demonstration application.</p>
+        <a href="/testing">Open Testing Module →</a>
+    </article>
+
+    <article class="module-card">
+        <div class="module-icon">🔐</div>
+        <h3>SQL Injection Mitigation</h3>
+        <p>Explore parameterized queries and secure database practices.</p>
+        <a href="/mitigation">Open Mitigation Module →</a>
+    </article>
+
+</section>
+
+<section class="dashboard-grid lower-grid">
+
+    <article class="panel">
+        <div class="panel-heading">
+            <div>
+                <h3>Recent Security Events</h3>
+                <p>Latest recorded application activity</p>
+            </div>
+            <span class="live-tag">MONITORING</span>
+        </div>
+
+        <div id="event-list" class="event-list">
+            <div class="empty-state">
+                <span>◉</span>
+                <p>No security events recorded yet.</p>
+                <small>Events will appear here when available.</small>
+            </div>
+        </div>
+    </article>
+
+    <article class="panel quick-panel">
+        <div class="panel-heading">
+            <div>
+                <h3>Quick Actions</h3>
+                <p>Frequently used tools</p>
+            </div>
+        </div>
+
+        <div class="quick-actions">
+            <a href="/testing" class="quick-action">🧪 <span>Run Security Test</span> →</a>
+            <a href="/detection" class="quick-action">🔍 <span>Inspect Input</span> →</a>
+            <a href="/mitigation" class="quick-action">🔐 <span>Security Guide</span> →</a>
+            <a href="/reports" class="quick-action">📊 <span>View Reports</span> →</a>
+        </div>
+    </article>
+
+</section>
+
+{% endblock %}

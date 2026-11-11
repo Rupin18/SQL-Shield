@@ -1,0 +1,99 @@
+
+{% extends "base.html" %}
+
+{% block title %}Analytics | SQL Shield{% endblock %}
+
+{% block page_heading %}Security Analytics{% endblock %}
+
+{% block page_subtitle %}
+Analyze security activity and vulnerability trends.
+{% endblock %}
+
+{% block content %}
+
+<section class="section-heading">
+    <div>
+        <h2>Security Performance</h2>
+        <p>Live metrics from your SQL Shield database</p>
+    </div>
+    <span class="period-label">LIVE DATABASE DATA</span>
+</section>
+
+<section class="stats-grid">
+
+    <article class="stat-card">
+        <div class="stat-top"><span>Total Scans</span></div>
+        <h2 id="total-scans">--</h2>
+        <small>Recorded assessments</small>
+    </article>
+
+    <article class="stat-card">
+        <div class="stat-top"><span>Vulnerabilities</span></div>
+        <h2 id="total-vulnerabilities">--</h2>
+        <small>Recorded findings</small>
+    </article>
+
+    <article class="stat-card">
+        <div class="stat-top"><span>Blocked Inputs</span></div>
+        <h2 id="blocked-inputs">--</h2>
+        <small>Suspicious test inputs</small>
+    </article>
+
+    <article class="stat-card">
+        <div class="stat-top"><span>Security Score</span></div>
+        <h2 id="security-score">--%</h2>
+        <small>Pending assessment</small>
+    </article>
+
+</section>
+
+<section class="dashboard-grid">
+
+    <article class="panel chart-panel">
+        <div class="panel-heading">
+            <div>
+                <h3>Scan Activity</h3>
+                <p>Daily scan activity over the last seven days</p>
+            </div>
+            <span class="live-tag">LIVE DATA</span>
+        </div>
+
+        <div class="chart-placeholder" id="activity-chart">
+            <div class="empty-state">
+                <span>▥</span>
+                <p>Loading analytics...</p>
+            </div>
+        </div>
+    </article>
+
+    <article class="panel severity-panel">
+        <div class="panel-heading">
+            <div>
+                <h3>Vulnerability Distribution</h3>
+                <p>Findings grouped by severity</p>
+            </div>
+        </div>
+
+        <div class="severity-list">
+            <div class="severity-item">
+                <span><i class="severity-dot critical"></i> Critical</span>
+                <strong id="critical-count">0</strong>
+            </div>
+            <div class="severity-item">
+                <span><i class="severity-dot high"></i> High</span>
+                <strong id="high-count">0</strong>
+            </div>
+            <div class="severity-item">
+                <span><i class="severity-dot medium"></i> Medium</span>
+                <strong id="medium-count">0</strong>
+            </div>
+            <div class="severity-item">
+                <span><i class="severity-dot low"></i> Low</span>
+                <strong id="low-count">0</strong>
+            </div>
+        </div>
+    </article>
+
+</section>
+
+{% endblock %}

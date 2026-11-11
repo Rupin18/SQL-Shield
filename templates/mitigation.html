@@ -1,0 +1,161 @@
+
+{% extends "base.html" %}
+
+{% block title %}Mitigation | SQL Shield{% endblock %}
+
+{% block page_heading %}SQL Injection Mitigation{% endblock %}
+
+{% block page_subtitle %}
+Test secure database operations and parameterized queries.
+{% endblock %}
+
+{% block content %}
+
+<!-- MITIGATION INTRODUCTION -->
+<section class="welcome">
+    <div>
+        <p class="eyebrow">DATABASE PROTECTION CENTER</p>
+        <h2>Secure Your Database</h2>
+        <p>
+            Learn how parameterized SQL queries prevent
+            user input from being interpreted as executable SQL.
+        </p>
+        <span class="live-tag">PROTECTION LAB</span>
+    </div>
+    <div class="shield-icon">🔐</div>
+</section>
+
+<!-- PARAMETERIZED QUERY TEST -->
+<section class="panel mitigation-tool">
+
+    <div class="panel-heading">
+        <div>
+            <h3>Parameterized Query Testing</h3>
+            <p>
+                Test how the application safely processes username input.
+            </p>
+        </div>
+        <span class="live-tag">PROTECTION ACTIVE</span>
+    </div>
+
+    <form id="mitigation-form">
+
+        <label for="username-test">Username to test</label>
+
+        <input
+            type="text"
+            id="username-test"
+            name="username"
+            maxlength="50"
+            placeholder="Enter a username to test..."
+            autocomplete="off"
+            required
+        >
+
+        <div class="detection-controls">
+            <small>
+                Input is processed using a parameterized SQL query.
+            </small>
+
+            <button type="submit" id="mitigation-button">
+                Test Secure Query →
+            </button>
+        </div>
+
+    </form>
+
+    <div
+        id="mitigation-result"
+        class="detection-result"
+        aria-live="polite"
+        hidden
+    ></div>
+
+</section>
+
+<!-- SQL QUERY COMPARISON -->
+<section class="mitigation-code-grid">
+
+    <!-- UNSAFE QUERY -->
+    <article class="panel mitigation-code-panel unsafe">
+
+        <div class="panel-heading">
+            <div>
+                <h3>Vulnerable Query Example</h3>
+                <p>Unsafe SQL string concatenation</p>
+            </div>
+
+            <span class="code-label">⚠ UNSAFE</span>
+        </div>
+
+        <pre><code><span class="code-keyword">query</span> = "SELECT * FROM users WHERE username = '" + username + "'"
+cursor.execute(query)</code></pre>
+
+        <p class="code-description">
+            User input is directly combined with SQL syntax.
+            This can allow malicious input to alter the query.
+        </p>
+
+    </article>
+
+    <!-- SECURE QUERY -->
+    <article class="panel mitigation-code-panel secure">
+
+        <div class="panel-heading">
+            <div>
+                <h3>Secure Query Example</h3>
+                <p>Parameterized SQL statement</p>
+            </div>
+
+            <span class="code-label">✓ SECURE</span>
+        </div>
+
+        <pre><code><span class="code-keyword">query</span> = "SELECT * FROM users WHERE username = <span class="code-parameter">%s</span>"
+cursor.execute(query, (username,))</code></pre>
+
+        <p class="code-description">
+            The database driver treats the supplied username
+            as data rather than executable SQL syntax.
+        </p>
+
+    </article>
+
+</section>
+
+<!-- SECURITY BEST PRACTICES -->
+<section class="panel">
+
+    <div class="panel-heading">
+        <div>
+            <h3>Mitigation Best Practices</h3>
+            <p>Recommended secure development practices</p>
+        </div>
+    </div>
+
+    <div class="severity-list">
+
+        <div class="severity-item">
+            <span>Parameterized queries</span>
+            <strong>Essential</strong>
+        </div>
+
+        <div class="severity-item">
+            <span>Input validation</span>
+            <strong>Recommended</strong>
+        </div>
+
+        <div class="severity-item">
+            <span>Least-privilege database accounts</span>
+            <strong>Recommended</strong>
+        </div>
+
+        <div class="severity-item">
+            <span>Safe error handling</span>
+            <strong>Recommended</strong>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

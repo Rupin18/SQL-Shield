@@ -1,0 +1,139 @@
+
+{% extends "base.html" %}
+
+{% block title %}Security Reports | SQL Shield{% endblock %}
+
+{% block page_heading %}Security Reports{% endblock %}
+
+{% block page_subtitle %}
+Review recorded security scans, vulnerabilities and application events.
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .report-download-section {
+        display: flex;
+        justify-content: flex-end;
+        margin: 20px 0;
+    }
+
+    .report-download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 22px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #22d3ee, #3b82f6);
+        color: #06111e;
+        font-weight: 700;
+        font-size: 13px;
+        text-decoration: none;
+        transition: .25s ease;
+    }
+
+    .report-download-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(34, 211, 238, .25);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="welcome">
+    <div>
+        <p class="eyebrow">SECURITY INTELLIGENCE CENTER</p>
+        <h2>Security Assessment Reports</h2>
+        <p>
+            Review the security findings and activity recorded
+            by your SQL Shield application.
+        </p>
+        <span class="live-tag">DATABASE RECORDS</span>
+    </div>
+    <div class="shield-icon">📊</div>
+</section>
+
+<section class="report-download-section">
+    <a href="/download-report" class="report-download-btn">
+        ↓ Download PDF Security Report
+    </a>
+</section>
+
+<section class="section-heading">
+    <div>
+        <h2>Assessment Summary</h2>
+        <p>Current recorded security statistics</p>
+    </div>
+</section>
+
+<section class="stats-grid">
+
+    <article class="stat-card">
+        <div class="stat-top"><span>Total Scans</span></div>
+        <h2 id="total-scans">--</h2>
+        <small>Recorded assessments</small>
+    </article>
+
+    <article class="stat-card">
+        <div class="stat-top"><span>Total Findings</span></div>
+        <h2 id="total-vulnerabilities">--</h2>
+        <small>Recorded vulnerabilities</small>
+    </article>
+
+    <article class="stat-card">
+        <div class="stat-top"><span>Blocked Inputs</span></div>
+        <h2 id="blocked-inputs">--</h2>
+        <small>Suspicious test attempts</small>
+    </article>
+
+</section>
+
+<section class="panel">
+    <div class="panel-heading">
+        <div>
+            <h3>Recent Security Events</h3>
+            <p>Latest recorded application activity</p>
+        </div>
+        <span class="live-tag">LIVE DATA</span>
+    </div>
+
+    <div id="event-list" class="event-list">
+        <div class="empty-state">
+            <span>◉</span>
+            <p>Loading security events...</p>
+        </div>
+    </div>
+</section>
+
+<section class="panel">
+    <div class="panel-heading">
+        <div>
+            <h3>Vulnerability Severity</h3>
+            <p>Distribution of recorded findings</p>
+        </div>
+    </div>
+
+    <div class="severity-list">
+        <div class="severity-item">
+            <span><i class="severity-dot critical"></i> Critical</span>
+            <strong id="critical-count">0</strong>
+        </div>
+
+        <div class="severity-item">
+            <span><i class="severity-dot high"></i> High</span>
+            <strong id="high-count">0</strong>
+        </div>
+
+        <div class="severity-item">
+            <span><i class="severity-dot medium"></i> Medium</span>
+            <strong id="medium-count">0</strong>
+        </div>
+
+        <div class="severity-item">
+            <span><i class="severity-dot low"></i> Low</span>
+            <strong id="low-count">0</strong>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

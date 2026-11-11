@@ -1,0 +1,101 @@
+
+{% extends "base.html" %}
+
+{% block title %}Vulnerability Testing | SQL Shield{% endblock %}
+
+{% block page_heading %}Vulnerability Testing{% endblock %}
+
+{% block page_subtitle %}
+Controlled security testing in your authorized local lab.
+{% endblock %}
+
+{% block content %}
+
+<section class="welcome">
+    <div>
+        <p class="eyebrow">SECURITY TESTING LAB</p>
+        <h2>Authorized Vulnerability Assessment</h2>
+        <p>
+            Perform controlled SQL injection assessments against
+            your local DVWA demonstration environment.
+        </p>
+        <span class="live-tag">LOCAL LAB ONLY</span>
+    </div>
+    <div class="shield-icon">🧪</div>
+</section>
+
+<section class="section-heading">
+    <div>
+        <h2>Testing Workflow</h2>
+        <p>Follow the stages of a controlled security assessment.</p>
+    </div>
+</section>
+
+<section class="module-grid">
+
+    <article class="module-card">
+        <div class="module-icon">🎯</div>
+        <h3>Target Configuration</h3>
+        <p>
+            Identify the authorized local DVWA target and
+            confirm the testing environment.
+        </p>
+        <strong>Stage 01 · Preparation</strong>
+    </article>
+
+    <article class="module-card">
+        <div class="module-icon">🔍</div>
+        <h3>Vulnerability Detection</h3>
+        <p>
+            Inspect application inputs and identify possible
+            SQL injection indicators.
+        </p>
+        <a href="/detection">Open Detection →</a>
+    </article>
+
+    <article class="module-card">
+        <div class="module-icon">📊</div>
+        <h3>Assessment Evidence</h3>
+        <p>
+            Record scan results, findings and screenshots
+            from authorized testing.
+        </p>
+        <a href="/reports">View Reports →</a>
+    </article>
+
+</section>
+
+<section class="panel">
+    <div class="panel-heading">
+        <div>
+            <h3>Testing Environment</h3>
+            <p>Local demonstration environment</p>
+        </div>
+        <span class="live-tag">AUTHORIZED</span>
+    </div>
+
+    <div class="severity-list">
+        <div class="severity-item">
+            <span>Platform</span>
+            <strong>DVWA</strong>
+        </div>
+        <div class="severity-item">
+            <span>Environment</span>
+            <strong>Metasploitable2</strong>
+        </div>
+        <div class="severity-item">
+            <span>Testing tool</span>
+            <strong>SQLMap</strong>
+        </div>
+        <div class="severity-item">
+            <span>Request inspection</span>
+            <strong>Burp Suite</strong>
+        </div>
+    </div>
+
+    <p class="subtitle">
+        Only test systems you own or have explicit authorization to assess.
+    </p>
+</section>
+
+{% endblock %}
